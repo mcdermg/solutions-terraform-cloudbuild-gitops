@@ -1,16 +1,22 @@
-# Copyright 2019 Google LLC
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     https://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+variable "project_id" {
+  description = "GCP project name"
+  # TODO hardcoding this for testing but use secrets maanager and syntax in cloudbuild yaml to ref it.
+  default     = "testing-gitops"
+}
 
+variable "region" {
+  description = "Region to use in the GCP provider"
+  type        = string
+  default     = "us-central1"
+}
 
-variable "project" {}
+variable "zone" {
+  description = "Zone to use in the GCP provider"
+  default     = "us-central1-c"
+}
+
+variable "zones" {
+  description = "Zones to use for the infrastructure in GCP"
+  type        = list(string)
+  default     = ["us-central1-c", "us-central1-f"]
+}
