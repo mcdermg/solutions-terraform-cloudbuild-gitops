@@ -24,6 +24,7 @@ locals {
 
 module "http_server" {
   source  = "../../modules/http_server"
+  zone    = var.zone
   project = var.project_id
   subnet  = google_compute_subnetwork.subnet.name
   # module.vpc.subnet
