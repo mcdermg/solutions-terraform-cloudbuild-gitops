@@ -16,3 +16,4 @@
 variable "project" {}
 variable "subnet" {}
 variable "zone" {}
+variable "name" {}

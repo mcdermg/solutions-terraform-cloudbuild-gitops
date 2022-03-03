@@ -17,16 +17,10 @@ locals {
   env = "dev"
 }
 
-# data "google_compute_subnetwork" "subnetwork" {
-#   name   = google_compute_subnetwork.subnet.name
-#   region = "us-central1"
-# }
-
 module "http_server" {
   source  = "../../modules/http_server"
   zone    = var.zone
   project = var.project_id
+  name    = local.env
   subnet  = google_compute_subnetwork.subnet.name
-  # module.vpc.subnet
-  #subnet  = data.google_compute_subnetwork.subnetwork.self_link
 }
