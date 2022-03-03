@@ -1,3 +1,4 @@
+
 # Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-output "instance_name" {
-  value = "${google_compute_instance.http_server.name}"
+locals {
+  env = "dev"
 }
 
-# output "external_ip" {
-#   value = "${google_compute_instance.http_server.network_interface.0.access_config.0.nat_ip}"
-# }
+module "http_server" {
+  source  = "../../modules/http_server"
+  project = var.project_id
+  subnet  = google_compute_subnetwork.subnet.name # module.vpc.subnet
+}
